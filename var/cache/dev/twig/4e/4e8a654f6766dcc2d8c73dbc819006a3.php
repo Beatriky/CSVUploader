@@ -12,7 +12,7 @@ use Twig\Sandbox\SecurityNotAllowedFunctionError;
 use Twig\Source;
 use Twig\Template;
 
-/* home/index.html.twig */
+/* home/new.html.twig */
 class __TwigTemplate_dc25e0f1e330437cc8136abd1a231c8d extends Template
 {
     private $source;
@@ -42,12 +42,12 @@ class __TwigTemplate_dc25e0f1e330437cc8136abd1a231c8d extends Template
     {
         $macros = $this->macros;
         $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "home/index.html.twig"));
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "home/new.html.twig"));
 
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "home/index.html.twig"));
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "home/new.html.twig"));
 
-        $this->parent = $this->loadTemplate("base.html.twig", "home/index.html.twig", 1);
+        $this->parent = $this->loadTemplate("base.html.twig", "home/new.html.twig", 1);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -150,12 +150,10 @@ class __TwigTemplate_dc25e0f1e330437cc8136abd1a231c8d extends Template
         echo twig_escape_filter($this->env, (isset($context["controller_name"]) || array_key_exists("controller_name", $context) ? $context["controller_name"] : (function () { throw new RuntimeError('Variable "controller_name" does not exist.', 23, $this->source); })()), "html", null, true);
         echo "! ✅</h1>
 
-        <title>Import CSV File Data with Progress Bar in PHP using Ajax</title>
-
     <br />
     <br />
     <div class=\"container\">
-        <h1 align=\"center\">Import CSV File Data with Progress Bar in PHP using Ajax - 3</h1>
+        <h1 align=\"center\">Import CSV File Data with Progress Bar in PHP using Ajax </h1>
         <br />
         <div class=\"panel panel-default\">
             <div class=\"panel-heading\">
@@ -209,10 +207,11 @@ class __TwigTemplate_dc25e0f1e330437cc8136abd1a231c8d extends Template
                     {
                         if(data.success)
                         {
-                            \$('#total_data').text(data.total_line);
+                            \$('#total_ data').text(data.total_line);
 
                             \$('#message').html('<div class=\"alert alert-success\">CSV File Uploaded</div>');
                         }
+                        start_import();
                         if(data.error)
                         {
                             \$('#message').html('<div class=\"alert alert-danger\">'+data.error+'</div>');
@@ -222,6 +221,17 @@ class __TwigTemplate_dc25e0f1e330437cc8136abd1a231c8d extends Template
                     }
                 })
             });
+        function start_import()
+        {
+            \$('#process').css('display', 'block');
+            \$.ajax({
+                url:\"import.php\",
+                success:function()
+                {
+
+                }
+            })
+        }
 
         });
     </script>
@@ -238,7 +248,7 @@ class __TwigTemplate_dc25e0f1e330437cc8136abd1a231c8d extends Template
 
     public function getTemplateName()
     {
-        return "home/index.html.twig";
+        return "home/new.html.twig";
     }
 
     public function isTraitable()
@@ -277,12 +287,10 @@ class __TwigTemplate_dc25e0f1e330437cc8136abd1a231c8d extends Template
 <div class=\"example-wrapper\">
     <h1>Hello {{ controller_name }}! ✅</h1>
 
-        <title>Import CSV File Data with Progress Bar in PHP using Ajax</title>
-
     <br />
     <br />
     <div class=\"container\">
-        <h1 align=\"center\">Import CSV File Data with Progress Bar in PHP using Ajax - 3</h1>
+        <h1 align=\"center\">Import CSV File Data with Progress Bar in PHP using Ajax </h1>
         <br />
         <div class=\"panel panel-default\">
             <div class=\"panel-heading\">
@@ -336,10 +344,11 @@ class __TwigTemplate_dc25e0f1e330437cc8136abd1a231c8d extends Template
                     {
                         if(data.success)
                         {
-                            \$('#total_data').text(data.total_line);
+                            \$('#total_ data').text(data.total_line);
 
                             \$('#message').html('<div class=\"alert alert-success\">CSV File Uploaded</div>');
                         }
+                        start_import();
                         if(data.error)
                         {
                             \$('#message').html('<div class=\"alert alert-danger\">'+data.error+'</div>');
@@ -349,12 +358,23 @@ class __TwigTemplate_dc25e0f1e330437cc8136abd1a231c8d extends Template
                     }
                 })
             });
+        function start_import()
+        {
+            \$('#process').css('display', 'block');
+            \$.ajax({
+                url:\"import.php\",
+                success:function()
+                {
+
+                }
+            })
+        }
 
         });
     </script>
 
 </div>
 {% endblock %}
-", "home/index.html.twig", "/app/templates/home/index.html.twig");
+", "home/new.html.twig", "/app/templates/home/new.html.twig");
     }
 }
