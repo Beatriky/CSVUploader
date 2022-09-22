@@ -19,6 +19,8 @@ return [
     'app_home' => [[], ['_controller' => 'App\\Controller\\HomeController::index'], [], [['text', '/home']], [], [], []],
     'app_login' => [[], ['_controller' => 'App\\Controller\\LoginController::login'], [], [['text', '/login']], [], [], []],
     'app_logout' => [[], ['_controller' => 'App\\Controller\\LoginController::logout'], [], [['text', '/logout']], [], [], []],
+    'app_oscar' => [[], ['_controller' => 'App\\Controller\\OscarController::index'], [], [['text', '/oscar']], [], [], []],
+    'app_csv_file' => [[], ['_controller' => 'App\\Controller\\OscarController::new'], [], [['text', '/csv_file']], [], [], []],
     'app_product_new' => [[], ['_controller' => 'App\\Controller\\ProductController::new'], [], [['text', '/product/new']], [], [], []],
     'app_register' => [[], ['_controller' => 'App\\Controller\\RegistrationController::register'], [], [['text', '/register']], [], [], []],
     'app_verify_email' => [[], ['_controller' => 'App\\Controller\\RegistrationController::verifyUserEmail'], [], [['text', '/verify/email']], [], [], []],

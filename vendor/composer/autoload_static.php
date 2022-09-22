@@ -17,6 +17,7 @@ class ComposerStaticInit265a7454731a4e0fe8cf149dfe4f7af3
         'c2aad8997a98dfc4771bdbffea3d62b7' => __DIR__ . '/..' . '/laminas/laminas-code/polyfill/ReflectionEnumPolyfill.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '6a47392539ca2329373e0d33e1dba053' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/bootstrap.php',
+        '9e4824c5afbdc1482b6025ce3d4dfde8' => __DIR__ . '/..' . '/league/csv/src/functions_include.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         '92c8763cd6170fce6fcfe7e26b4e8c10' => __DIR__ . '/..' . '/symfony/phpunit-bridge/bootstrap.php',
         'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
@@ -127,6 +128,7 @@ class ComposerStaticInit265a7454731a4e0fe8cf149dfe4f7af3
         ),
         'L' => 
         array (
+            'League\\Csv\\' => 11,
             'Laminas\\Code\\' => 13,
         ),
         'E' => 
@@ -498,6 +500,10 @@ class ComposerStaticInit265a7454731a4e0fe8cf149dfe4f7af3
         array (
             0 => __DIR__ . '/..' . '/masterminds/html5/src',
         ),
+        'League\\Csv\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/csv/src',
+        ),
         'Laminas\\Code\\' => 
         array (
             0 => __DIR__ . '/..' . '/laminas/laminas-code/src',
@@ -582,11 +588,16 @@ class ComposerStaticInit265a7454731a4e0fe8cf149dfe4f7af3
     );
 
     public static $classMap = array (
+        'App\\Controller\\HomeController' => __DIR__ . '/../..' . '/src/Controller/HomeController.php',
         'App\\Controller\\LoginController' => __DIR__ . '/../..' . '/src/Controller/LoginController.php',
+        'App\\Controller\\ProductController' => __DIR__ . '/../..' . '/src/Controller/ProductController.php',
         'App\\Controller\\RegistrationController' => __DIR__ . '/../..' . '/src/Controller/RegistrationController.php',
+        'App\\Entity\\Product' => __DIR__ . '/../..' . '/src/Entity/Product.php',
         'App\\Entity\\Users' => __DIR__ . '/../..' . '/src/Entity/Users.php',
+        'App\\Form\\ProductType' => __DIR__ . '/../..' . '/src/Form/ProductType.php',
         'App\\Form\\RegistrationFormType' => __DIR__ . '/../..' . '/src/Form/RegistrationFormType.php',
         'App\\Kernel' => __DIR__ . '/../..' . '/src/Kernel.php',
+        'App\\Repository\\ProductRepository' => __DIR__ . '/../..' . '/src/Repository/ProductRepository.php',
         'App\\Repository\\UsersRepository' => __DIR__ . '/../..' . '/src/Repository/UsersRepository.php',
         'App\\Security\\EmailVerifier' => __DIR__ . '/../..' . '/src/Security/EmailVerifier.php',
         'App\\Security\\LoginAuthenticator' => __DIR__ . '/../..' . '/src/Security/LoginAuthenticator.php',
@@ -1892,6 +1903,30 @@ class ComposerStaticInit265a7454731a4e0fe8cf149dfe4f7af3
         'Laminas\\Code\\Reflection\\PropertyReflection' => __DIR__ . '/..' . '/laminas/laminas-code/src/Reflection/PropertyReflection.php',
         'Laminas\\Code\\Reflection\\ReflectionInterface' => __DIR__ . '/..' . '/laminas/laminas-code/src/Reflection/ReflectionInterface.php',
         'Laminas\\Code\\Scanner\\DocBlockScanner' => __DIR__ . '/..' . '/laminas/laminas-code/src/Scanner/DocBlockScanner.php',
+        'League\\Csv\\AbstractCsv' => __DIR__ . '/..' . '/league/csv/src/AbstractCsv.php',
+        'League\\Csv\\ByteSequence' => __DIR__ . '/..' . '/league/csv/src/ByteSequence.php',
+        'League\\Csv\\CannotInsertRecord' => __DIR__ . '/..' . '/league/csv/src/CannotInsertRecord.php',
+        'League\\Csv\\CharsetConverter' => __DIR__ . '/..' . '/league/csv/src/CharsetConverter.php',
+        'League\\Csv\\ColumnConsistency' => __DIR__ . '/..' . '/league/csv/src/ColumnConsistency.php',
+        'League\\Csv\\EncloseField' => __DIR__ . '/..' . '/league/csv/src/EncloseField.php',
+        'League\\Csv\\EscapeFormula' => __DIR__ . '/..' . '/league/csv/src/EscapeFormula.php',
+        'League\\Csv\\Exception' => __DIR__ . '/..' . '/league/csv/src/Exception.php',
+        'League\\Csv\\HTMLConverter' => __DIR__ . '/..' . '/league/csv/src/HTMLConverter.php',
+        'League\\Csv\\Info' => __DIR__ . '/..' . '/league/csv/src/Info.php',
+        'League\\Csv\\InvalidArgument' => __DIR__ . '/..' . '/league/csv/src/InvalidArgument.php',
+        'League\\Csv\\MapIterator' => __DIR__ . '/..' . '/league/csv/src/MapIterator.php',
+        'League\\Csv\\RFC4180Field' => __DIR__ . '/..' . '/league/csv/src/RFC4180Field.php',
+        'League\\Csv\\Reader' => __DIR__ . '/..' . '/league/csv/src/Reader.php',
+        'League\\Csv\\ResultSet' => __DIR__ . '/..' . '/league/csv/src/ResultSet.php',
+        'League\\Csv\\Statement' => __DIR__ . '/..' . '/league/csv/src/Statement.php',
+        'League\\Csv\\Stream' => __DIR__ . '/..' . '/league/csv/src/Stream.php',
+        'League\\Csv\\SyntaxError' => __DIR__ . '/..' . '/league/csv/src/SyntaxError.php',
+        'League\\Csv\\TabularDataReader' => __DIR__ . '/..' . '/league/csv/src/TabularDataReader.php',
+        'League\\Csv\\UnableToProcessCsv' => __DIR__ . '/..' . '/league/csv/src/UnableToProcessCsv.php',
+        'League\\Csv\\UnavailableFeature' => __DIR__ . '/..' . '/league/csv/src/UnavailableFeature.php',
+        'League\\Csv\\UnavailableStream' => __DIR__ . '/..' . '/league/csv/src/UnavailableStream.php',
+        'League\\Csv\\Writer' => __DIR__ . '/..' . '/league/csv/src/Writer.php',
+        'League\\Csv\\XMLConverter' => __DIR__ . '/..' . '/league/csv/src/XMLConverter.php',
         'Locale' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/Resources/stubs/Locale.php',
         'Masterminds\\HTML5' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5.php',
         'Masterminds\\HTML5\\Elements' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Elements.php',

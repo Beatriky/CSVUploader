@@ -354,6 +354,13 @@
         <argument type="service" id=".service_locator.jIxfAsi.App\Controller\LoginController"/>
       </call>
     </service>
+    <service id="App\Controller\OscarController" class="App\Controller\OscarController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.jIxfAsi.App\Controller\OscarController"/>
+      </call>
+    </service>
     <service id="App\Controller\ProductController" class="App\Controller\ProductController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -369,11 +376,22 @@
         <argument type="service" id=".service_locator.jIxfAsi.App\Controller\RegistrationController"/>
       </call>
     </service>
+    <service id="App\Form\OscarType" class="App\Form\OscarType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\ProductType" class="App\Form\ProductType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
     <service id="App\Form\RegistrationFormType" class="App\Form\RegistrationFormType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
+    </service>
+    <service id="App\Handler\CSVHandler" class="App\Handler\CSVHandler" autowire="true" autoconfigure="true">
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
+    </service>
+    <service id="App\Message\CSVMessage" class="App\Message\CSVMessage" autowire="true" autoconfigure="true"/>
+    <service id="App\Repository\OscarRepository" class="App\Repository\OscarRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
     </service>
     <service id="App\Repository\ProductRepository" class="App\Repository\ProductRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
@@ -1179,6 +1197,7 @@
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
       </argument>
       <argument type="collection">
+        <argument>App\Form\OscarType</argument>
         <argument>App\Form\ProductType</argument>
         <argument>App\Form\RegistrationFormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
@@ -3193,7 +3212,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.24bbXRy"/>
+      <argument type="service" id=".service_locator.5NRywM5"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -3375,6 +3394,9 @@
           <argument>async</argument>
         </argument>
         <argument key="Symfony\Component\Notifier\Message\SmsMessage" type="collection">
+          <argument>async</argument>
+        </argument>
+        <argument key="App\Message\CSVMessage" type="collection">
           <argument>async</argument>
         </argument>
       </argument>
@@ -4092,7 +4114,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator.X_OAvMb"/>
+      <argument type="service" id=".service_locator.kcSd1Oa"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -6035,16 +6057,23 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\LoginController" class="App\Controller\LoginController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\LoginController" class="App\Controller\LoginController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\LoginController" class="App\Controller\LoginController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\OscarController" class="App\Controller\OscarController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\OscarController" class="App\Controller\OscarController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\OscarController" class="App\Controller\OscarController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ProductController" class="App\Controller\ProductController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ProductController" class="App\Controller\ProductController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ProductController" class="App\Controller\ProductController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\RegistrationController" class="App\Controller\RegistrationController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\RegistrationController" class="App\Controller\RegistrationController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\RegistrationController" class="App\Controller\RegistrationController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\OscarType" class="App\Form\OscarType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\OscarType" class="App\Form\OscarType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ProductType" class="App\Form\ProductType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\ProductType" class="App\Form\ProductType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RegistrationFormType" class="App\Form\RegistrationFormType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\RegistrationFormType" class="App\Form\RegistrationFormType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\OscarRepository" class="App\Repository\OscarRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\OscarRepository" class="App\Repository\OscarRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ProductRepository" class="App\Repository\ProductRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ProductRepository" class="App\Repository\ProductRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UsersRepository" class="App\Repository\UsersRepository" autowire="true" abstract="true"/>
@@ -6383,9 +6412,18 @@
         <argument key="authenticationUtils" type="service_closure" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.qH9NJFW" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.4T6jlme" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="bus" type="service_closure" id="debug.traced.messenger.bus.default"/>
+        <argument key="db" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="slugger" type="service_closure" id="slugger"/>
+      </argument>
+    </service>
+    <service id=".service_locator..agfNKa" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="bus" type="service_closure" id="debug.traced.messenger.bus.default"/>
         <argument key="slugger" type="service_closure" id="slugger"/>
       </argument>
     </service>
@@ -6404,11 +6442,12 @@
         <argument key="translator" type="service_closure" id="translator.data_collector"/>
       </argument>
     </service>
-    <service id=".service_locator.WDHrtwp" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.VCwh.Kf" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\LoginController::login" type="service_closure" id=".service_locator.zFcJjKU"/>
-        <argument key="App\Controller\ProductController::new" type="service_closure" id=".service_locator.qH9NJFW"/>
+        <argument key="App\Controller\OscarController::new" type="service_closure" id=".service_locator.4T6jlme"/>
+        <argument key="App\Controller\ProductController::new" type="service_closure" id=".service_locator..agfNKa"/>
         <argument key="App\Controller\RegistrationController::register" type="service_closure" id=".service_locator.fylmQxX"/>
         <argument key="App\Controller\RegistrationController::verifyUserEmail" type="service_closure" id=".service_locator.q2ji3lu"/>
         <argument key="App\Kernel::loadRoutes" type="service_closure" id=".service_locator.xUrKPVU"/>
@@ -6418,7 +6457,8 @@
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.xUrKPVU"/>
         <argument key="kernel::terminate" type="service_closure" id=".service_locator.bRdave9"/>
         <argument key="App\Controller\LoginController:login" type="service_closure" id=".service_locator.zFcJjKU"/>
-        <argument key="App\Controller\ProductController:new" type="service_closure" id=".service_locator.qH9NJFW"/>
+        <argument key="App\Controller\OscarController:new" type="service_closure" id=".service_locator.4T6jlme"/>
+        <argument key="App\Controller\ProductController:new" type="service_closure" id=".service_locator..agfNKa"/>
         <argument key="App\Controller\RegistrationController:register" type="service_closure" id=".service_locator.fylmQxX"/>
         <argument key="App\Controller\RegistrationController:verifyUserEmail" type="service_closure" id=".service_locator.q2ji3lu"/>
         <argument key="kernel:loadRoutes" type="service_closure" id=".service_locator.xUrKPVU"/>
@@ -6590,9 +6630,10 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.24bbXRy" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.5NRywM5" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Form\OscarType" type="service_closure" id="App\Form\OscarType"/>
         <argument key="App\Form\ProductType" type="service_closure" id="App\Form\ProductType"/>
         <argument key="App\Form\RegistrationFormType" type="service_closure" id="App\Form\RegistrationFormType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service_closure" id="form.type.entity"/>
@@ -6679,9 +6720,10 @@
         <argument key="doctrine.orm.messenger.doctrine_schema_subscriber" type="service_closure" id="doctrine.orm.messenger.doctrine_schema_subscriber"/>
       </argument>
     </service>
-    <service id=".service_locator.X_OAvMb" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.kcSd1Oa" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Repository\OscarRepository" type="service_closure" id="App\Repository\OscarRepository"/>
         <argument key="App\Repository\ProductRepository" type="service_closure" id="App\Repository\ProductRepository"/>
         <argument key="App\Repository\UsersRepository" type="service_closure" id="App\Repository\UsersRepository"/>
       </argument>
@@ -6960,6 +7002,12 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.jIxfAsi" method="withContext"/>
     </service>
+    <service id=".service_locator.jIxfAsi.App\Controller\OscarController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\OscarController"/>
+      <argument>App\Controller\OscarController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.jIxfAsi" method="withContext"/>
+    </service>
     <service id=".service_locator.jIxfAsi.App\Controller\ProductController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\ProductController"/>
       <argument>App\Controller\ProductController</argument>
@@ -7228,12 +7276,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.WDHrtwp"/>
+      <argument type="service" id=".service_locator.VCwh.Kf"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.WDHrtwp"/>
+      <argument type="service" id=".service_locator.VCwh.Kf"/>
     </service>
     <service id="debug.traced.messenger.bus.default.inner" class="Symfony\Component\Messenger\MessageBus">
       <argument type="iterator">
@@ -8167,7 +8215,7 @@
     <service id="SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface" alias="symfonycasts.verify_email.helper"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.gSv9zYw" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.WDHrtwp"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.VCwh.Kf"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -8188,10 +8236,12 @@
     <service id=".service_locator.80edgLI" alias="messenger.receiver_locator"/>
     <service id=".service_locator.h8Jkkd2" alias="messenger.retry_strategy_locator"/>
     <service id=".service_locator.0GV1BZZ" alias=".service_locator.gSv9zYw"/>
+    <service id=".service_locator.jUQDVsr" alias=".service_locator.4T6jlme"/>
+    <service id=".service_locator.7umV7aR" alias=".service_locator..agfNKa"/>
     <service id=".service_locator.T2FUcRy" alias=".service_locator.fylmQxX"/>
-    <service id=".service_locator.HDmpwt." alias=".service_locator.WDHrtwp"/>
+    <service id=".service_locator.EdcLLgf" alias=".service_locator.VCwh.Kf"/>
     <service id=".service_locator.wKF4yn1" alias=".service_locator.19_mNxd"/>
-    <service id=".service_locator.i7k8tNR" alias=".service_locator.24bbXRy"/>
+    <service id=".service_locator.yE_EXbY" alias=".service_locator.5NRywM5"/>
     <service id=".service_locator.XW18Svm" alias=".service_locator.TcKhdzh"/>
     <service id=".service_locator.O24_MAy" alias=".service_locator.yY.p4P7"/>
     <service id=".service_locator._eRAkJb" alias=".service_locator.jIxfAsi"/>
@@ -8241,7 +8291,8 @@
     <service id=".service_locator.FatRZu2" alias=".service_locator.bRdave9"/>
     <service id=".service_locator.uo5c0SP" alias=".service_locator.xUrKPVU"/>
     <service id=".service_locator.URfgn8g" alias=".service_locator.zFcJjKU"/>
-    <service id=".service_locator.XUMg4qf" alias=".service_locator.qH9NJFW"/>
+    <service id=".service_locator.8kjzXe7" alias=".service_locator.4T6jlme"/>
+    <service id=".service_locator.UzJaUb1" alias=".service_locator..agfNKa"/>
     <service id=".service_locator.ed8PPjY" alias=".service_locator.fylmQxX"/>
     <service id=".service_locator.426yQGu" alias=".service_locator.q2ji3lu"/>
     <service id=".service_locator.eAaUVIw" alias=".service_locator.jIxfAsi"/>

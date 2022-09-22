@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => '__root__',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => 'f51406301e3f745322da697f7a6062a2e3751711',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => 'f51406301e3f745322da697f7a6062a2e3751711',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -187,6 +187,15 @@
             'reference' => '0337d9265bc2e6376babad8c511500821620cb30',
             'type' => 'library',
             'install_path' => __DIR__ . '/../laminas/laminas-code',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'league/csv' => array(
+            'pretty_version' => '9.8.0',
+            'version' => '9.8.0.0',
+            'reference' => '9d2e0265c5d90f5dd601bc65ff717e05cec19b47',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../league/csv',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
