@@ -4,52 +4,38 @@ namespace App\Message;
 class CSVMessage
 {
     private string $name;
-    private  $age;
+    private int $age;
     private string $movie;
-    private $year;
+    private int $year;
 
-    /**
-     * @param $name
-     * @param $age
-     * @param $movie
-     * @param $year
-     */
-    public function __construct($name, $age, $movie, $year)
+
+    public function __construct($year,$age,$name,$movie)
     {
-        $this->name = $name;
-        $this->age = $age;
-        $this->movie = $movie;
         $this->year = $year;
+        $this->age = $age;
+        $this->name = $name;
+        $this->movie = $movie;
+
     }
 
-    /**
-     * @return mixed
-     */
-    public function getAge()
+
+    public function getAge(): int
     {
         return $this->age;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getMovie()
+    public function getMovie(): string
     {
         return $this->movie;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getYear()
+    public function getYear(): int
     {
         return $this->year;
     }
-
 
     public function getName(): string
     {
         return $this->name;
     }
-
 }
