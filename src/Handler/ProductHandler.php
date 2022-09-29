@@ -2,12 +2,13 @@
 
 namespace App\Handler;
 
-use App\Entity\Oscar;
+use App\Entity\Product;
 use App\Message\CSVMessage;
+use App\Message\ProductMessage;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 
-class OscarHandler implements MessageHandlerInterface
+class ProductHandler implements MessageHandlerInterface
 {
     private EntityManagerInterface $em;
 
@@ -16,13 +17,11 @@ class OscarHandler implements MessageHandlerInterface
         $this->em = $em;
     }
 
-    public function __invoke(CSVMessage $message): void
+    public function __invoke(ProductMessage $message): void
     {
-        $csv = (new Oscar())
-            ->setYear($message->getYear())
-            ->setAge($message->getAge())
+        $csv = (new Product())
             ->setName($message->getName())
-            ->setMovie($message->getMovie());
+            ->setBrochureFilename($message->getBrochureFilename());
         $this->em->persist($csv);
         $this->em->flush();
     }

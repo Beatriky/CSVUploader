@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Message;
+
 class CSVMessage
 {
     private string $name;
@@ -9,7 +10,7 @@ class CSVMessage
     private int $year;
 
 
-    public function __construct($year,$age,$name,$movie)
+    public function __construct($year, $age, $name, $movie)
     {
         $this->year = $year;
         $this->age = $age;

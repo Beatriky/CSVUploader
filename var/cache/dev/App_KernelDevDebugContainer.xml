@@ -386,11 +386,15 @@
     <service id="App\Form\RegistrationFormType" class="App\Form\RegistrationFormType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
-    <service id="App\Handler\CSVHandler" class="App\Handler\CSVHandler" autowire="true" autoconfigure="true">
+    <service id="App\Handler\CSVHandler" class="App\Handler\CSVHandler" autowire="true" autoconfigure="true"/>
+    <service id="App\Handler\OscarHandler" class="App\Handler\OscarHandler" autowire="true" autoconfigure="true">
       <tag name="messenger.message_handler"/>
       <argument type="service" id="doctrine.orm.default_entity_manager"/>
     </service>
-    <service id="App\Handler\OscarHandler" class="App\Handler\OscarHandler" autowire="true" autoconfigure="true"/>
+    <service id="App\Handler\ProductHandler" class="App\Handler\ProductHandler" autowire="true" autoconfigure="true">
+      <tag name="messenger.message_handler"/>
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
+    </service>
     <service id="App\Message\CSVMessage" class="App\Message\CSVMessage" autowire="true" autoconfigure="true"/>
     <service id="App\Message\ProductMessage" class="App\Message\ProductMessage" autowire="true" autoconfigure="true"/>
     <service id="App\Repository\OscarRepository" class="App\Repository\OscarRepository" autowire="true" autoconfigure="true">
@@ -974,7 +978,13 @@
         <argument key="messenger.bus.default" type="collection">
           <argument key="App\Message\CSVMessage" type="collection">
             <argument type="collection">
-              <argument>App\Handler\CSVHandler</argument>
+              <argument>App\Handler\OscarHandler</argument>
+              <argument type="collection"/>
+            </argument>
+          </argument>
+          <argument key="App\Message\ProductMessage" type="collection">
+            <argument type="collection">
+              <argument>App\Handler\ProductHandler</argument>
               <argument type="collection"/>
             </argument>
           </argument>
@@ -3407,6 +3417,9 @@
           <argument>async</argument>
         </argument>
         <argument key="App\Message\CSVMessage" type="collection">
+          <argument>async</argument>
+        </argument>
+        <argument key="App\Message\ProductMessage" type="collection">
           <argument>async</argument>
         </argument>
       </argument>
@@ -6082,8 +6095,10 @@
     <service id=".abstract.instanceof.App\Form\ProductType" class="App\Form\ProductType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RegistrationFormType" class="App\Form\RegistrationFormType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\RegistrationFormType" class="App\Form\RegistrationFormType" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Component\Messenger\Handler\MessageHandlerInterface.0.App\Handler\CSVHandler" class="App\Handler\CSVHandler" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Handler\CSVHandler" class="App\Handler\CSVHandler" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Messenger\Handler\MessageHandlerInterface.0.App\Handler\OscarHandler" class="App\Handler\OscarHandler" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Handler\OscarHandler" class="App\Handler\OscarHandler" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Messenger\Handler\MessageHandlerInterface.0.App\Handler\ProductHandler" class="App\Handler\ProductHandler" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Handler\ProductHandler" class="App\Handler\ProductHandler" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\OscarRepository" class="App\Repository\OscarRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\OscarRepository" class="App\Repository\OscarRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ProductRepository" class="App\Repository\ProductRepository" autowire="true" abstract="true"/>
@@ -6684,8 +6699,12 @@
         <argument key="failed" type="service_closure" id="messenger.transport.failed"/>
       </argument>
     </service>
-    <service id=".messenger.handler_descriptor.cYj_p1Q" class="Symfony\Component\Messenger\Handler\HandlerDescriptor">
-      <argument type="service" id="App\Handler\CSVHandler"/>
+    <service id=".messenger.handler_descriptor.0WVyLIv" class="Symfony\Component\Messenger\Handler\HandlerDescriptor">
+      <argument type="service" id="App\Handler\OscarHandler"/>
+      <argument type="collection"/>
+    </service>
+    <service id=".messenger.handler_descriptor.D8kCjGn" class="Symfony\Component\Messenger\Handler\HandlerDescriptor">
+      <argument type="service" id="App\Handler\ProductHandler"/>
       <argument type="collection"/>
     </service>
     <service id=".messenger.handler_descriptor.tGvt0LH" class="Symfony\Component\Messenger\Handler\HandlerDescriptor">
@@ -6707,7 +6726,10 @@
     <service id="messenger.bus.default.messenger.handlers_locator" class="Symfony\Component\Messenger\Handler\HandlersLocator">
       <argument type="collection">
         <argument key="App\Message\CSVMessage" type="iterator">
-          <argument type="service" id=".messenger.handler_descriptor.cYj_p1Q"/>
+          <argument type="service" id=".messenger.handler_descriptor.0WVyLIv"/>
+        </argument>
+        <argument key="App\Message\ProductMessage" type="iterator">
+          <argument type="service" id=".messenger.handler_descriptor.D8kCjGn"/>
         </argument>
         <argument key="Symfony\Component\Mailer\Messenger\SendEmailMessage" type="iterator">
           <argument type="service" id=".messenger.handler_descriptor.tGvt0LH"/>
