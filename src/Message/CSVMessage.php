@@ -18,7 +18,6 @@ class CSVMessage
 
     }
 
-
     public function getAge(): int
     {
         return $this->age;

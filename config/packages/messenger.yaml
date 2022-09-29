@@ -1,7 +1,11 @@
 framework:
     messenger:
         failure_transport: failed
-
+#            buses:
+#                messenger.bus.default:
+#                    middleware:
+#                      # service ids that implement Symfony\Component\Messenger\Middleware\MiddlewareInterface
+#                        - 'App\Middleware\ResendingMiddleware
         transports:
             # https://symfony.com/doc/current/messenger.html#transport-configuration
             async:
