@@ -392,6 +392,7 @@
     </service>
     <service id="App\Handler\OscarHandler" class="App\Handler\OscarHandler" autowire="true" autoconfigure="true"/>
     <service id="App\Message\CSVMessage" class="App\Message\CSVMessage" autowire="true" autoconfigure="true"/>
+    <service id="App\Message\ProductMessage" class="App\Message\ProductMessage" autowire="true" autoconfigure="true"/>
     <service id="App\Repository\OscarRepository" class="App\Repository\OscarRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>

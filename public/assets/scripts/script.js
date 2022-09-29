@@ -14,6 +14,18 @@ $("input:checkbox").on('click', function() {
     }
 });
 
+function myFunction() {
+    let checkBoxOscar = document.getElementById("checkboxOscar");
+    let checkBoxProduct = document.getElementById("checkboxProduct");
+
+    let text = document.getElementById("text");
+    if (checkBoxOscar.checked === true || checkBoxProduct.checked ===true){
+        text.style.display = "block";
+    } else {
+        text.style.display = "none";
+    }
+}
+
 // $(document).ready(function(){
 //     var clear_timer;
 //
